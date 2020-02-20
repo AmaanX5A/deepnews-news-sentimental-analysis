@@ -1,0 +1,445 @@
+<!DOCTYPE html>
+{% load staticfiles %}
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+  <meta name="description" content="">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <!-- The above 4 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+
+  <!-- Title  -->
+  <title>Deep News - News Magazine HTML5 Template | Home</title>
+
+  <!-- Favicon  -->
+  <link rel="icon" href="{% static "img/core-img/favicon.ico" %}"/ >
+
+  <!-- Core Style CSS -->
+  <link rel="stylesheet" href="{% static "css/core-style.css" %}"/ >
+  <link rel="stylesheet" href="{% static "css/style.css" %}"/ >
+
+  <!-- Responsive CSS -->
+  <link rel="stylesheet" href="{% static "css/responsive.css" %}"/ >
+
+</head>
+
+<body>
+  <header class="header-area">
+
+      <!-- Middle Header Area -->
+      <div class="middle-header">
+          <div class="container h-100">
+              <div class="row h-100 align-items-center">
+                  <!-- Logo Area -->
+                  <div class="col-12 col-md-4">
+                      <div class="logo-area">
+                          <a href="/HOME/"><img src="{% static "img/deep news.png" %}" alt="logo"></a>
+                      </div>
+                  </div>
+                  <!-- Header Advert Area -->
+                  <div class="col-12 col-md-8">
+                      <div class="header-advert-area">
+                          <a href="#"><img src="{% static "img/bg-img/top-advert.png" %}" alt="img/header-add"></a>
+                      </div>
+                  </div>
+              </div>
+          </div>
+      </div>
+      <!-- Bottom Header Area -->
+      <div class="bottom-header">
+          <div class="container h-100">
+              <div class="row h-100 align-items-center">
+                  <div class="col-12">
+                      <div class="main-menu">
+                          <nav class="navbar navbar-expand-lg">
+                              <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#gazetteMenu" aria-controls="gazetteMenu" aria-expanded="false" aria-label="Toggle navigation"><i class="fa fa-bars"></i> Menu</button>
+                              <div class="collapse navbar-collapse" id="gazetteMenu">
+                                  <ul class="navbar-nav mr-auto">
+                                      <li class="nav-item ">
+                                          <a class="nav-link" id="mazy" href="{% url 'records' pid="HOME" %}">HOME</a>
+                                      </li>
+
+                                      <li class="nav-item">
+                                          <a class="nav-link"  href="{% url 'records' pid="LATEST" %}">LATEST</a>
+                                      </li>
+                                      <li class="nav-item">
+                                          <a class="nav-link" href="{% url 'records' pid="WORLD" %}">WORLD</a>
+                                      </li>
+                                      <li class="nav-item">
+                                          <a class="nav-link" href="{% url 'records' pid="CNN" %}">CNN NEWS</a>
+                                      </li>
+                                      <li class="nav-item active">
+                                          <a class="nav-link" href="{% url 'records' pid="BBC" %}">BBC NEWS <span class="sr-only">(current)</span></a>
+                                      </li>
+                                      <li class="nav-item">
+                                          <a class="nav-link" href="{% url 'records' pid="SKY" %}">SKY NEWS</a>
+                                      </li>
+                                      <li class="nav-item">
+                                          <a class="nav-link" href="{% url 'records' pid="POSITIVE" %}">POSITIVE</a>
+                                      </li>
+                                      <li class="nav-item">
+                                          <a class="nav-link" href="{% url 'records' pid="NEGATIVE" %}">NEGATIVE</a>
+                                      </li>
+                                      <li class="nav-item">
+                                          <a class="nav-link" href="{% url 'records' pid="NEUTRAL" %}">NEUTRAL</a>
+                                      </li>
+
+                                  </ul>
+                                  <!-- Search Form -->
+                                  <div class="header-search-form mr-auto">
+                                        <form action="#">
+                                            <input type="search" placeholder="Input your keyword then press enter..." id="search" name="search">
+                                            <input class="d-none" type="submit" value="submit">
+                                        </form>
+                                    </div>
+                                    <!-- Search btn -->
+                                    <div id="searchbtn">
+                                        <i class="fa fa-search" aria-hidden="true"></i>
+                                    </div>
+                              </div>
+                          </nav>
+                      </div>
+                  </div>
+              </div>
+          </div>
+      </div>
+  </header>
+  <!-- Header Area End -->
+
+
+    <section class="catagory-welcome-post-area section_padding_100">
+        <div class="container">
+            <div class="row">
+              {% if articles %}
+                {% for news in articles %}
+                  {% if forloop.counter == 1 %}
+                  <div class="col-12 col-md-4">
+                    <!-- Gazette Welcome Post -->
+                      <div class="gazette-welcome-post">
+                          <!-- Post Tag -->
+                          <div class="gazette-post-tag">
+                              <a href=""> {{news.score}}</a>
+                          </div>
+                          <a href="{% url 'single_post' uuid=news.id %}" class="font-pt"><h2 class="font-pt">{{news.headline|truncatewords:8}}</h2></a>
+                          <p class="gazette-post-date">{{news.date}}</p>
+                          <!-- Post Thumbnail -->
+                          <div class="blog-post-thumbnail my-5">
+                            <a href="{% url 'single_post' uuid=news.id %}"  class="font-pt"><img src="{{ news.image }}" alt="post-thumb"></a>
+                          </div>
+                          <!-- Post Excerpt -->
+                          <a href="{% url 'single_post' uuid=news.id %}" class="font-pt"><p><font color="black">{{news.content.1|truncatewords:15}}</font></p></a>
+                          <!-- Reading More -->
+                          <div class="post-continue-reading-share mt-30">
+                              <div class="post-continue-btn">
+                                <a href="{% url 'single_post' uuid=news.id %}"  class="font-pt">Continue Reading<i class="fa fa-chevron-right" aria-hidden="true"></i> </a>
+
+                              </div>
+                          </div>
+                      </div>
+
+                  </div>
+                  {% elif forloop.counter == 2  %}
+                  <div class="col-12 col-md-4">
+                    <!-- Gazette Welcome Post -->
+                      <div class="gazette-welcome-post">
+                          <!-- Post Tag -->
+                          <div class="gazette-post-tag">
+                              <a href=""> {{news.score}}</a>
+                          </div>
+                          <a href="{% url 'single_post' uuid=news.id %}" class="font-pt"><h2 class="font-pt">{{news.headline|truncatewords:8}}</h2></a>
+                          <p class="gazette-post-date">{{news.date}}</p>
+                          <!-- Post Thumbnail -->
+                          <div class="blog-post-thumbnail my-5">
+                            <a href="{% url 'single_post' uuid=news.id %}"  class="font-pt"> <img src="{{ news.image }}" alt="post-thumb"></a>
+                          </div>
+                          <!-- Post Excerpt -->
+                          <a href="{% url 'single_post' uuid=news.id %}" class="font-pt"><p><font color="black">{{news.content.1|truncatewords:15}}</font></p></a>
+                          <!-- Reading More -->
+                          <div class="post-continue-reading-share mt-30">
+                              <div class="post-continue-btn">
+                                    <a href="{% url 'single_post' uuid=news.id %}"  class="font-pt">Continue Reading<i class="fa fa-chevron-right" aria-hidden="true"></i> </a>
+                              </div>
+                          </div>
+                      </div>
+
+                  </div>
+                  {% elif forloop.counter == 3  %}
+                  <div class="col-12 col-md-4" >
+                    <!-- Gazette Welcome Post -->
+                      <div class="gazette-welcome-post">
+                          <!-- Post Tag -->
+                          <div class="gazette-post-tag">
+                              <a href=""> {{news.score}}</a>
+                          </div>
+                          <a href="{% url 'single_post' uuid=news.id %}"   class="font-pt"><h2 class="font-pt">{{news.headline|truncatewords:8}}</h2></a>
+                          <p class="gazette-post-date">{{news.date}}</p>
+                          <!-- Post Thumbnail -->
+                          <div class="blog-post-thumbnail my-5">
+                          <a href="{% url 'single_post' uuid=news.id %}" class="font-pt"><img src="{{ news.image }}" alt="post-thumb"></a>
+                          </div>
+                          <!-- Post Excerpt -->
+                          <a href="{% url 'single_post' uuid=news.id %}" class="font-pt"><p  ><font color="black">{{news.content.1|truncatewords:15}}</font></p></a>
+                          <!-- Reading More -->
+                          <div class="post-continue-reading-share mt-30">
+                              <div class="post-continue-btn">
+                                    <a href="{% url 'single_post' uuid=news.id %}"  class="font-pt">Continue Reading<i class="fa fa-chevron-right" aria-hidden="true"></i> </a>
+                              </div>
+                          </div>
+                      </div>
+
+                  </div>
+                  {% elif forloop.counter == 4  %}
+                  <div class="col-12 col-md-6">
+                    <!-- Gazette Welcome Post -->
+                      <div class="gazette-welcome-post">
+                          <!-- Post Tag -->
+                          <div class="gazette-post-tag">
+                              <a href=""> {{news.score}}</a>
+                          </div>
+                          <a href="{% url 'single_post' uuid=news.id %}" class="font-pt"><h2 class="font-pt">{{news.headline|truncatewords:10}}</h2></a>
+                          <p class="gazette-post-date">{{news.date}}</p>
+                          <!-- Post Thumbnail -->
+                          <div class="blog-post-thumbnail my-5">
+                              <a href="{% url 'single_post' uuid=news.id %}" class="font-pt"><img src="{{ news.image }}" alt="post-thumb"></a>
+                          </div>
+                          <!-- Post Excerpt -->
+                          <a href="{% url 'single_post' uuid=news.id %}" class="font-pt"><p><font color="black">{{news.content.1|truncatewords:15}}</font></p></a>
+                          <!-- Reading More -->
+                          <div class="post-continue-reading-share mt-30">
+                              <div class="post-continue-btn">
+                                    <a href="{% url 'single_post' uuid=news.id %}"  class="font-pt">Continue Reading<i class="fa fa-chevron-right" aria-hidden="true"></i> </a>
+                              </div>
+                          </div>
+                      </div>
+
+                  </div>
+                  {% elif forloop.counter == 5  %}
+                  <div class="col-12 col-md-6">
+                    <!-- Gazette Welcome Post -->
+                      <div class="gazette-welcome-post">
+                          <!-- Post Tag -->
+                          <div class="gazette-post-tag">
+                              <a href=""> {{news.score}}</a>
+                          </div>
+                          <a href="{% url 'single_post' uuid=news.id %}" class="font-pt"><h2 class="font-pt">{{news.headline|truncatewords:10}}</h2></a>
+                          <p class="gazette-post-date">{{news.date}}</p>
+                          <!-- Post Thumbnail -->
+                          <div class="blog-post-thumbnail my-5">
+                              <a href="{% url 'single_post' uuid=news.id %}" class="font-pt"><img src="{{ news.image }}" alt="post-thumb"></a>
+                          </div>
+                          <!-- Post Excerpt -->
+                          <a href="{% url 'single_post' uuid=news.id %}" class="font-pt"><p><font color="black">{{news.content.1|truncatewords:15}}</font></p></a>
+                          <!-- Reading More -->
+                          <div class="post-continue-reading-share mt-30">
+                              <div class="post-continue-btn">
+                                    <a href="{% url 'single_post' uuid=news.id %}"  class="font-pt">Continue Reading<i class="fa fa-chevron-right" aria-hidden="true"></i> </a>
+                              </div>
+                          </div>
+                      </div>
+
+                  </div>
+                  {% elif forloop.counter == 6  %}
+                  <div class="col-12">
+                    <!-- Gazette Welcome Post -->
+                    <div class="gazette-welcome-post d-md-flex align-items-center">
+                        <!-- Post Thumbnail -->
+                        <div class="blog-post-thumbnail">
+                            <a href="{% url 'single_post' uuid=news.id %}" class="font-pt"><img src="{{ news.image }}" alt="post-thumb"></a>
+                        </div>
+                        <div class="welcome-post-contents ml-30">
+                            <!-- Post Tag -->
+                            <div class="gazette-post-tag">
+                                <a href=""> {{news.score}}</a>
+                            </div>
+                            <a href="{% url 'single_post' uuid=news.id %}" class="font-pt"><h2 class="font-pt">{{news.headline|truncatewords:14}}</h2></a>
+                            <p class="gazette-post-date mb-15">{{news.date}}</p>
+                            <!-- Post Excerpt -->
+                            <a href="{% url 'single_post' uuid=news.id %}" class="font-pt"><p><font color="black">{{news.content.1|truncatewords:30}}</font></p></a>
+
+                            <!-- Reading More -->
+                            <div class="post-continue-reading-share mt-15">
+                                <div class="post-continue-btn">
+                                      <a href="{% url 'single_post' uuid=news.id %}"  class="font-pt">Continue Reading<i class="fa fa-chevron-right" aria-hidden="true"></i> </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                {% elif forloop.counter == 7  %}
+              </div>
+
+              <div class="row">
+                  <div class="col-12">
+                      <div class="gazette-pagination-area">
+                          <nav aria-label="Page navigation example">
+                              <ul class="pagination">
+
+                                  <li class="page-item"><a class="page-link"href="{% url 'Pages' uid=news.image %}">{{news.image}}</a></li>
+                                  <li class="page-item"><a class="page-link" href="{% url 'Pages' uid=news.date %}">{{news.date}}</a></li>
+                                  <li class="page-item"><a class="page-link" href="{% url 'Pages' uid=news.headline %}">{{news.headline}}</a></li>
+                                  <li class="page-item"><a class="page-link" href="{% url 'Pages' uid=news.link %}">{{news.link}}</a></li>
+                                  <li class="page-item">
+                                      <a class="page-link" href="{% url 'Pages' uid=news.id %}" aria-label="Next"><i class="fa fa-angle-right"></i></a>
+                                  </li>
+                              </ul>
+                          </nav>
+                      </div>
+                  </div>
+              </div>
+          </div>
+
+
+
+                  {% endif %}
+
+
+
+
+                {% endfor %}
+
+              {% endif %}
+
+    </section>
+
+    <!-- Footer Area Start -->
+    <footer class="footer-area bg-img background-overlay" style=" padding-top:10%;  background-image: url('https://static1.squarespace.com/static/5a00b9df8dd041a7bf7bd412/t/5abd24b0aa4a99b4e8c6ef18/1522345443904/utah+state+gov.jpg?fbclid=IwAR0zn5po3fEUx5crXC6qbs3CYTKNMZPshFgfyMKRvs_5gvA_D04sGDjHuK0' );">
+        <!-- Top Footer Area -->
+        <div class="top-footer-area section_padding_100_70">
+            <div class="container">
+                <div class="row">
+                    <!-- Single Footer Widget -->
+                    <div class="col-12 col-sm-6 col-md-4 col-lg-2">
+                        <div class="single-footer-widget">
+                            <div class="footer-widget-title">
+                                <h4 class="font-pt">Regions</h4>
+                            </div>
+                            <ul class="footer-widget-menu">
+                                <li><a href="#">U.S.</a></li>
+                                <li><a href="#">Africa</a></li>
+                                <li><a href="#">Americas</a></li>
+                                <li><a href="#">Asia</a></li>
+                                <li><a href="#">China</a></li>
+                                <li><a href="#">Europe</a></li>
+                                <li><a href="#">Middle</a></li>
+                                <li><a href="#">East</a></li>
+                                <li><a href="#">Opinion</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <!-- Single Footer Widget -->
+                    <div class="col-12 col-sm-6 col-md-4 col-lg-2">
+                        <div class="single-footer-widget">
+                            <div class="footer-widget-title">
+                                <h4 class="font-pt">Fashion</h4>
+                            </div>
+                            <ul class="footer-widget-menu">
+                                <li><a href="#">Election 2016</a></li>
+                                <li><a href="#">Nation</a></li>
+                                <li><a href="#">World</a></li>
+                                <li><a href="#">Our Team</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <!-- Single Footer Widget -->
+                    <div class="col-12 col-sm-6 col-md-4 col-lg-2">
+                        <div class="single-footer-widget">
+                            <div class="footer-widget-title">
+                                <h4 class="font-pt">Politics</h4>
+                            </div>
+                            <ul class="footer-widget-menu">
+                                <li><a href="#">Business</a></li>
+                                <li><a href="#">Markets</a></li>
+                                <li><a href="#">Tech</a></li>
+                                <li><a href="#">Luxury</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <!-- Single Footer Widget -->
+                    <div class="col-12 col-sm-6 col-md-4 col-lg-2">
+                        <div class="single-footer-widget">
+                            <div class="footer-widget-title">
+                                <h4 class="font-pt">Featured</h4>
+                            </div>
+                            <ul class="footer-widget-menu">
+                                <li><a href="#">Football</a></li>
+                                <li><a href="#">Golf</a></li>
+                                <li><a href="#">Tennis</a></li>
+                                <li><a href="#">Motorsport</a></li>
+                                <li><a href="#">Horseracing</a></li>
+                                <li><a href="#">Equestrian</a></li>
+                                <li><a href="#">Sailing</a></li>
+                                <li><a href="#">Skiing</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <!-- Single Footer Widget -->
+                    <div class="col-12 col-sm-6 col-md-4 col-lg-2">
+                        <div class="single-footer-widget">
+                            <div class="footer-widget-title">
+                                <h4 class="font-pt">FAQ</h4>
+                            </div>
+                            <ul class="footer-widget-menu">
+                                <li><a href="#">Aviation</a></li>
+                                <li><a href="#">Business</a></li>
+                                <li><a href="#">Traveller</a></li>
+                                <li><a href="#">Destinations</a></li>
+                                <li><a href="#">Features</a></li>
+                                <li><a href="#">Food/Drink</a></li>
+                                <li><a href="#">Hotels</a></li>
+                                <li><a href="#">Partner Hotels</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <!-- Single Footer Widget -->
+                    <div class="col-12 col-sm-6 col-md-4 col-lg-2">
+                        <div class="single-footer-widget">
+                            <div class="footer-widget-title">
+                                <h4 class="font-pt">+More</h4>
+                            </div>
+                            <ul class="footer-widget-menu">
+                                <li><a href="#">Fashion</a></li>
+                                <li><a href="#">Design</a></li>
+                                <li><a href="#">Architecture</a></li>
+                                <li><a href="#">Arts</a></li>
+                                <li><a href="#">Autos</a></li>
+                                <li><a href="#">Luxury</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Bottom Footer Area -->
+        <div class="bottom-footer-area">
+            <div class="container h-100">
+                <div class="row h-100 align-items-center justify-content-center">
+                    <div class="col-12">
+                        <div class="copywrite-text">
+                            <p><!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved |  <a href="/index/" target="">DeepNews</a>
+<!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <!-- Footer Area End -->
+    <script src="{% static "js/jquery/jquery-2.2.4.min.js" %}"></script>
+    <!-- Popper js -->
+    <script src="{% static "js/popper.min.js" %}"></script>
+    <!-- Bootstrap js -->
+    <script src="{% static "js/bootstrap.min.js" %}"></script>
+    <!-- Plugins js -->
+    <script src="{% static "js/plugins.js" %}"></script>
+    <!-- Active js -->
+    <script src="{% static "js/active.js" %}"></script>
+
+</body>
+
+</html>

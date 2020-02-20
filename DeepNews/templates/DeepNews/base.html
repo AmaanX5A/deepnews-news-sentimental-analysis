@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+{% load staticfiles %}
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="description" content="">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- The above 4 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+
+    <!-- Title  -->
+    <title>TheGazette - News Magazine HTML5 Template | Single Post</title>
+
+
+
+    <!-- Core Style CSS -->
+    <link rel="stylesheet" href="{% static "css/core-style.css" %}" />
+    <link rel="stylesheet" href="{% static "css/style.css" %}" />
+
+    <!-- Responsive CSS -->
+    <link href="{% static "css/responsive.css" rel="stylesheet" %}"/ >
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Django + Charts.js</title>
+
+    {% include 'base/css.html' %}
+    {% include 'base/bootstrap_defaults.html' %}
+  </head>
+  <body>
+    <header class="header-area">
+
+        <!-- Middle Header Area -->
+        <div class="middle-header">
+            <div class="container h-100">
+                <div class="row h-100 align-items-center">
+                    <!-- Logo Area -->
+                    <div class="col-12 col-md-4">
+                        <div class="logo-area">
+                            <a href="/HOME/"><img src="{% static "img/deep news.png" %}" alt="logo"></a>
+                        </div>
+                    </div>
+                    <!-- Header Advert Area -->
+                    <div class="col-12 col-md-8">
+                        <div class="header-advert-area">
+                            <a href="#"><img src="{% static "img/bg-img/top-advert.png" %}" alt="img/header-add"></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Bottom Header Area -->
+        <div class="bottom-header">
+            <div class="container h-100">
+                <div class="row h-100 align-items-center">
+                    <div class="col-12">
+                        <div class="main-menu">
+                            <nav class="navbar navbar-expand-lg">
+                                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#gazetteMenu" aria-controls="gazetteMenu" aria-expanded="false" aria-label="Toggle navigation"><i class="fa fa-bars"></i> Menu</button>
+                                <div class="collapse navbar-collapse" id="gazetteMenu">
+                                  <ul class="navbar-nav mr-auto">
+                                      <li class="nav-item active">
+                                          <a class="nav-link" href="{% url 'records' pid="HOME" %}">HOME <span class="sr-only">(current)</span></a>
+                                      </li>
+
+                                      <li class="nav-item">
+                                          <a class="nav-link" href="{% url 'records' pid="LATEST" %}">LATEST</a>
+                                      </li>
+                                      <li class="nav-item">
+                                          <a class="nav-link" href="{% url 'records' pid="WORLD" %}">WORLD</a>
+                                      </li>
+                                      <li class="nav-item">
+                                          <a class="nav-link" href="{% url 'records' pid="CNN" %}">CNN NEWS</a>
+                                      </li>
+                                      <li class="nav-item">
+                                          <a class="nav-link" href="{% url 'records' pid="BBC" %}">BBC NEWS</a>
+                                      </li>
+                                      <li class="nav-item">
+                                          <a class="nav-link" href="{% url 'records' pid="SKY" %}">SKY NEWS</a>
+                                      </li>
+                                      <li class="nav-item">
+                                          <a class="nav-link" href="{% url 'records' pid="POSITIVE" %}">POSITIVE</a>
+                                      </li>
+                                      <li class="nav-item">
+                                          <a class="nav-link" href="{% url 'records' pid="NEGATIVE" %}">NEGATIVE</a>
+                                      </li>
+                                      <li class="nav-item">
+                                          <a class="nav-link" href="{% url 'records' pid="NEUTRAL" %}">NEUTRAL</a>
+                                      </li>
+                                  </ul>
+                                  <!-- Search Form -->
+                                  <div >
+
+                                </div>
+                              </div>
+                          </nav>
+                      </div>
+                  </div>
+              </div>
+          </div>
+      </div>
+  </header>
+  <!-- Header Area End -->
+
+
+      <section class="single-post-area">
+        <div class="single-post-title bg-img background-overlay" id="bg" style="background-image: url(https://www.narcity.com/u/2018/03/24/44464cbe030b567998c23f5c1ff42f9aed13c26f.jpg_1200x630.jpg?fbclid=IwAR0r7w7hHhs5ZZL21eAM1736xEr8c7sYZuCCM1jaivwItzXLsuubVzm6MTc);">
+            <div class="container h-100">
+                <div class="row h-100 align-items-end">
+                    <div class="col-12">
+                        <div class="single-post-title-content">
+                            <!-- Post Tag -->
+                            <div class="gazette-post-tag">
+                                <a href="#" id ="type">Editorial</a>
+                            </div>
+                            <h2 class="font-pt" id="titles">Move over</h2>
+                            <p id="dat">March 29, 2016</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+
+
+
+
+          <!-- Single Post Title
+          {% if article %}
+          <div class="single-post-title bg-img background-overlay" style="background-image: url(https://www.narcity.com/u/2018/03/24/44464cbe030b567998c23f5c1ff42f9aed13c26f.jpg_1200x630.jpg?fbclid=IwAR0r7w7hHhs5ZZL21eAM1736xEr8c7sYZuCCM1jaivwItzXLsuubVzm6MTc);">
+              <div class="container h-100">
+                  <div class="row h-100 align-items-end">
+                      <div class="col-12">
+                          <div class="single-post-title-content">
+
+                              <div class="gazette-post-tag">
+                                  <a href="#">Editorial</a>
+                              </div>
+                              <h2 class="font-pt">{{ article.headline }}</h2>
+                              <p>{{article.date}}</p>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+          </div>
+          <div class="single-post-contents">
+              <div class="container">
+                  <div class="row justify-content-center">
+                    {% for x in article.content %}
+                    {% if forloop.counter <= 7 %}
+                      {% if forloop.counter == 1 %}
+                      <div class="col-12 col-md-8">
+                          <div class="single-post-text">
+                            <p>{{ x }}<p>
+                        {% elif forloop.counter <= 6 %}
+                          <p>{{ x }}<p>
+                        {% elif forloop.counter == 7 %}
+                          <p>{{ x }}<p>
+                          </div>
+                      </div>
+                        {% endif %}
+                    {% elif forloop.counter == 8 %}
+                    <div class="col-12">
+                        <div style="" class="single-post-thumb">
+                            <img align="middle"  class="centre" src="{{article.image}}" alt="">
+                        </div>
+                    </div>
+                    <div class="col-12 col-md-8">
+                        <div class="single-post-text">
+                          <p>{{ x }}<p>
+
+
+                    {% elif forloop.counter > 8 %}
+                    <p>{{ x }}<p>
+
+                    {% endif %}
+
+                    {% endfor %}
+                  </div>
+              </div>
+                  </div>
+              </div>
+
+
+          {% endif %}-->
+          <div class='container'>
+          {% block content %}
+          {% endblock content %}
+          </div>
+          {% include 'base/js.html' %}
+          <script>
+          $(document).ready(function(){
+            {% block jquery %}{% endblock %}
+          })
+          </script>
+          <div class="single-post-contents">
+              <div class="container">
+                  <div class="row justify-content-center">
+                    <div class="col-12 col-md-8">
+                        <div class="single-post-text">
+                            <p font color="black" id="paragraph" >Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed dictum nunc libero, vitae rutrum nunc porta id. Interdum et malesuada fames ac ante ipsum primis in faucibus. Nam arcu augue, semper at elementum</p>
+                            <p id="paragraph2"></p>
+                            <p id="paragraph3"></p>
+                            <p id="paragraph4"></p>
+                            <p id="paragraph5"></p>
+                            <p id="paragraph6"></p>
+                          </div>
+                    </div>
+                      <div class="col-12" id="inser" align="middle" class="centre" >
+                          <div class="single-post-thumb">
+                              <img align="middle" class="centre"  id="imgs" src="img/blog-img/24.jpg" alt="" margin-right:"5000 px";>
+
+                          </div>
+                      </div>
+                      <div class="col-12 col-md-8">
+                          <div class="single-post-text">
+                              <p id="paragraph7"></p>
+                              <p id="paragraph8"></p>
+                              <p id="paragraph9"></p>
+                              <p id="paragraph10"></p>
+                              <p id="paragraph11"></p>
+                              <p id="paragraph12"></p>
+                              <p id="paragraph13"></p>
+                              <p id="paragraph14"></p>
+                              <p id="paragraph15"></p>
+                              <p id="paragraph16"></p>
+                              <p id="paragraph17"></p>
+                              <p id="paragraph18"></p>
+                              <p id="paragraph19"></p>
+                              <p id="paragraph20"></p>
+                              <p id="paragraph21"></p>
+                              <p id="paragraph22"></p>
+                              <p id="paragraph23"></p>
+                              <p id="paragraph24"></p>
+                              <p id="paragraph25"></p>
+                            </div>
+                      </div>
+
+
+                  </div>
+              </div>
+          </div>
+      </section>
+
+
+      <!-- Footer Area Start -->
+      <footer class="footer-area bg-img background-overlay" style="background-image: url(https://static1.squarespace.com/static/5a00b9df8dd041a7bf7bd412/t/5abd24b0aa4a99b4e8c6ef18/1522345443904/utah+state+gov.jpg?fbclid=IwAR0zn5po3fEUx5crXC6qbs3CYTKNMZPshFgfyMKRvs_5gvA_D04sGDjHuK0);">
+          <!-- Top Footer Area -->
+          <div class="top-footer-area section_padding_100_70">
+              <div class="container">
+                  <div class="row">
+                      <!-- Single Footer Widget -->
+                      <div class="col-12 col-sm-6 col-md-4 col-lg-2">
+                          <div class="single-footer-widget">
+                              <div class="footer-widget-title">
+                                  <h4 class="font-pt">Regions</h4>
+                              </div>
+                              <ul class="footer-widget-menu">
+                                  <li><a href="#">U.S.</a></li>
+                                  <li><a href="#">Africa</a></li>
+                                  <li><a href="#">Americas</a></li>
+                                  <li><a href="#">Asia</a></li>
+                                  <li><a href="#">China</a></li>
+                                  <li><a href="#">Europe</a></li>
+                                  <li><a href="#">Middle</a></li>
+                                  <li><a href="#">East</a></li>
+                                  <li><a href="#">Opinion</a></li>
+                              </ul>
+                          </div>
+                      </div>
+                      <!-- Single Footer Widget -->
+                      <div class="col-12 col-sm-6 col-md-4 col-lg-2">
+                          <div class="single-footer-widget">
+                              <div class="footer-widget-title">
+                                  <h4 class="font-pt">Fashion</h4>
+                              </div>
+                              <ul class="footer-widget-menu">
+                                  <li><a href="#">Election 2016</a></li>
+                                  <li><a href="#">Nation</a></li>
+                                  <li><a href="#">World</a></li>
+                                  <li><a href="#">Our Team</a></li>
+                              </ul>
+                          </div>
+                      </div>
+                      <!-- Single Footer Widget -->
+                      <div class="col-12 col-sm-6 col-md-4 col-lg-2">
+                          <div class="single-footer-widget">
+                              <div class="footer-widget-title">
+                                  <h4 class="font-pt">Politics</h4>
+                              </div>
+                              <ul class="footer-widget-menu">
+                                  <li><a href="#">Business</a></li>
+                                  <li><a href="#">Markets</a></li>
+                                  <li><a href="#">Tech</a></li>
+                                  <li><a href="#">Luxury</a></li>
+                              </ul>
+                          </div>
+                      </div>
+                      <!-- Single Footer Widget -->
+                      <div class="col-12 col-sm-6 col-md-4 col-lg-2">
+                          <div class="single-footer-widget">
+                              <div class="footer-widget-title">
+                                  <h4 class="font-pt">Featured</h4>
+                              </div>
+                              <ul class="footer-widget-menu">
+                                  <li><a href="#">Football</a></li>
+                                  <li><a href="#">Golf</a></li>
+                                  <li><a href="#">Tennis</a></li>
+                                  <li><a href="#">Motorsport</a></li>
+                                  <li><a href="#">Horseracing</a></li>
+                                  <li><a href="#">Equestrian</a></li>
+                                  <li><a href="#">Sailing</a></li>
+                                  <li><a href="#">Skiing</a></li>
+                              </ul>
+                          </div>
+                      </div>
+                      <!-- Single Footer Widget -->
+                      <div class="col-12 col-sm-6 col-md-4 col-lg-2">
+                          <div class="single-footer-widget">
+                              <div class="footer-widget-title">
+                                  <h4 class="font-pt">FAQ</h4>
+                              </div>
+                              <ul class="footer-widget-menu">
+                                  <li><a href="#">Aviation</a></li>
+                                  <li><a href="#">Business</a></li>
+                                  <li><a href="#">Traveller</a></li>
+                                  <li><a href="#">Destinations</a></li>
+                                  <li><a href="#">Features</a></li>
+                                  <li><a href="#">Food/Drink</a></li>
+                                  <li><a href="#">Hotels</a></li>
+                                  <li><a href="#">Partner Hotels</a></li>
+                              </ul>
+                          </div>
+                      </div>
+                      <!-- Single Footer Widget -->
+                      <div class="col-12 col-sm-6 col-md-4 col-lg-2">
+                          <div class="single-footer-widget">
+                              <div class="footer-widget-title">
+                                  <h4 class="font-pt">+More</h4>
+                              </div>
+                              <ul class="footer-widget-menu">
+                                  <li><a href="#">Fashion</a></li>
+                                  <li><a href="#">Design</a></li>
+                                  <li><a href="#">Architecture</a></li>
+                                  <li><a href="#">Arts</a></li>
+                                  <li><a href="#">Autos</a></li>
+                                  <li><a href="#">Luxury</a></li>
+                              </ul>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+          </div>
+
+          <!-- Bottom Footer Area -->
+          <div class="bottom-footer-area">
+              <div class="container h-100">
+                  <div class="row h-100 align-items-center justify-content-center">
+                      <div class="col-12">
+                          <div class="copywrite-text">
+                              <p><!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+  Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="fa fa-heart-o" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib</a>
+  <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+  </p>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+          </div>
+      </footer>
+      <!-- Footer Area End -->
+
+
+  </body>
+</html>

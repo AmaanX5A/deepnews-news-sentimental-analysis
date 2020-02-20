@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Users</title>
+  </head>
+  <body>
+    <h1>Users are </h1>
+    {% if articles %}
+    <ol>
+      {% for person in articles %}
+      <li>User info</li>
+      <ul>
+        <li>Headline&nbsp;&nbsp;&nbsp;:{{ person.headline}}</li>
+        <li>Link&nbsp;&nbsp;&nbsp;:{{ person.link}}</li>
+        <li>URL&nbsp;&nbsp;&nbsp;:{{ person.image}}</li>
+        <li>Content&nbsp;&nbsp;&nbsp;:{{ person.content}}</li>
+        <li>Date&nbsp;&nbsp;&nbsp;:{{ person.date}}</li>
+      </ul>
+      {% endfor %}
+    </ol>
+    {% endif %}
+  </body>
+</html>
